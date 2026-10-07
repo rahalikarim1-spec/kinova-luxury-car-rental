@@ -299,6 +299,15 @@ export const en = {
     askLocation: "Ask about {area}",
     note: "Pick-up or delivery arrangements are confirmed by KINOVA when you enquire.",
   },
+  landing: {
+    compareTitle: "Compare the models at a glance",
+    compareSub: "Key differences between the cars on this page. Rates and availability are confirmed per request.",
+    midCtaTitle: "Found a car you like?",
+    midCtaText: "Send your dates and KINOVA confirms availability and pricing – usually the quickest route is a WhatsApp message.",
+    dubaiTitle: "More ways to rent in Dubai",
+    checkModel: "Check availability",
+    engine: "Engine",
+  },
   notFound: {
     title: "Page not found",
     text: "The page you are looking for does not exist or has moved.",

@@ -1,21 +1,22 @@
+import { brandExtras } from "./landing-extras";
 import type { Brand, BrandKey } from "./types";
 
-export const brands: Brand[] = [
+const baseBrands: Brand[] = [
   {
     key: "lamborghini",
     slug: "lamborghini",
-    name: { en: "Lamborghini", ar: "لامبورغيني", ru: "Lamborghini" },
+    name: { en: "Lamborghini", ar: "لامبورغيني", ru: "Ламборгини" },
     title: {
       en: "Lamborghini Rental Dubai – Urus, Revuelto, Huracán",
       ar: "تأجير لامبورغيني في دبي – أوروس، ريفويلتو، هوراكان",
-      ru: "Аренда Lamborghini в Дубае – Urus, Revuelto, Huracán",
+      ru: "Аренда Ламборгини в Дубае – Urus, Revuelto, Huracán",
     },
     description: {
       en: "Rent a Lamborghini in Dubai: Urus, Revuelto or Huracán EVO Spyder. See each model and check availability with KINOVA on WhatsApp, by phone or enquiry form.",
       ar: "استأجر لامبورغيني في دبي: أوروس أو ريفويلتو أو هوراكان إيفو سبايدر. تعرّف على كل موديل وتحقق من التوفر مع KINOVA.",
-      ru: "Аренда Lamborghini в Дубае: Urus, Revuelto или Huracán EVO Spyder. Выберите модель и уточните наличие у KINOVA в WhatsApp, по телефону или через форму.",
+      ru: "Аренда Ламборгини (Lamborghini) в Дубае: Urus, Revuelto или Huracán EVO Spyder. Выберите модель и уточните наличие у KINOVA в WhatsApp, по телефону или через форму.",
     },
-    h1: { en: "Lamborghini Rental Dubai", ar: "تأجير لامبورغيني في دبي", ru: "Аренда Lamborghini в Дубае" },
+    h1: { en: "Lamborghini Rental Dubai", ar: "تأجير لامبورغيني في دبي", ru: "Аренда Ламборгини в Дубае" },
     intro: {
       en: "Three very different ways to drive a Lamborghini in Dubai: the five-seat Urus for everyday presence, the Revuelto as the brand's flagship V12 plug-in hybrid, and the Huracán EVO Spyder when you want a V10 with the roof down.",
       ar: "ثلاث طرق مختلفة لقيادة لامبورغيني في دبي: أوروس بخمسة مقاعد للحضور اليومي، وريفويلتو الرائدة بمحرك V12 الهجين، وهوراكان إيفو سبايدر لمن يريد V10 والسقف مفتوح.",
@@ -54,18 +55,18 @@ export const brands: Brand[] = [
   {
     key: "ferrari",
     slug: "ferrari",
-    name: { en: "Ferrari", ar: "فيراري", ru: "Ferrari" },
+    name: { en: "Ferrari", ar: "فيراري", ru: "Феррари" },
     title: {
       en: "Ferrari Rental Dubai – F8 Spider & SF90",
       ar: "تأجير فيراري في دبي – F8 سبايدر وSF90",
-      ru: "Аренда Ferrari в Дубае – F8 Spider и SF90",
+      ru: "Аренда Феррари в Дубае – F8 Spider и SF90",
     },
     description: {
       en: "Rent a Ferrari in Dubai: F8 Spider or SF90. Compare the models and request availability from KINOVA by WhatsApp, phone or enquiry form.",
       ar: "استأجر فيراري في دبي: F8 سبايدر أو SF90. قارن الموديلات واطلب التوفر من KINOVA.",
-      ru: "Аренда Ferrari в Дубае: F8 Spider или SF90. Сравните модели и запросите наличие у KINOVA.",
+      ru: "Аренда Феррари (Ferrari) в Дубае: F8 Spider или SF90. Сравните модели и запросите наличие у KINOVA.",
     },
-    h1: { en: "Ferrari Rental Dubai", ar: "تأجير فيراري في دبي", ru: "Аренда Ferrari в Дубае" },
+    h1: { en: "Ferrari Rental Dubai", ar: "تأجير فيراري في دبي", ru: "Аренда Феррари в Дубае" },
     intro: {
       en: "Two Ferraris, two characters. The F8 Spider is a twin-turbo V8 convertible built around the drive itself; the SF90 is a plug-in hybrid supercar that shows how far the brand has pushed performance.",
       ar: "فيراريان بشخصيتين. F8 سبايدر مكشوفة بمحرك V8 بتيربو مزدوج مبنية حول متعة القيادة، وSF90 سوبر كار هجينة تُظهر إلى أي مدى دفعت العلامة حدود الأداء.",
@@ -104,18 +105,18 @@ export const brands: Brand[] = [
   {
     key: "mclaren",
     slug: "mclaren",
-    name: { en: "McLaren", ar: "ماكلارين", ru: "McLaren" },
+    name: { en: "McLaren", ar: "ماكلارين", ru: "Макларен" },
     title: {
       en: "McLaren Rental Dubai – Artura & GT",
       ar: "تأجير ماكلارين في دبي – أرتورا وGT",
-      ru: "Аренда McLaren в Дубае – Artura и GT",
+      ru: "Аренда Макларен в Дубае – Artura и GT",
     },
     description: {
       en: "Rent a McLaren in Dubai: Artura hybrid supercar or the grand-touring McLaren GT. Check availability with KINOVA on WhatsApp, phone or enquiry form.",
       ar: "استأجر ماكلارين في دبي: سوبر كار أرتورا الهجينة أو ماكلارين GT. تحقق من التوفر مع KINOVA.",
-      ru: "Аренда McLaren в Дубае: гибридный суперкар Artura или грандтурер McLaren GT. Уточните наличие у KINOVA.",
+      ru: "Аренда Макларен (McLaren) в Дубае: гибридный суперкар Artura или грандтурер McLaren GT. Уточните наличие у KINOVA.",
     },
-    h1: { en: "McLaren Rental Dubai", ar: "تأجير ماكلارين في دبي", ru: "Аренда McLaren в Дубае" },
+    h1: { en: "McLaren Rental Dubai", ar: "تأجير ماكلارين في دبي", ru: "Аренда Макларен в Дубае" },
     intro: {
       en: "McLaren builds cars around lightness and driver feedback. The Artura is its plug-in hybrid supercar; the McLaren GT is the one designed to cover distance comfortably, with room for luggage.",
       ar: "تبني ماكلارين سياراتها حول الخفة وإحساس السائق. أرتورا هي السوبر كار الهجينة، وماكلارين GT مصممة لقطع المسافات براحة ومساحة للأمتعة.",
@@ -154,18 +155,18 @@ export const brands: Brand[] = [
   {
     key: "rolls-royce",
     slug: "rolls-royce",
-    name: { en: "Rolls-Royce", ar: "رولز رويس", ru: "Rolls-Royce" },
+    name: { en: "Rolls-Royce", ar: "رولز رويس", ru: "Роллс-Ройс" },
     title: {
       en: "Rolls-Royce Rental Dubai – Ghost, Cullinan, Phantom",
       ar: "تأجير رولز رويس في دبي – غوست وكولينان وفانتوم",
-      ru: "Аренда Rolls-Royce в Дубае – Ghost, Cullinan, Phantom",
+      ru: "Аренда Роллс-Ройс в Дубае – Ghost, Cullinan, Phantom",
     },
     description: {
       en: "Rent a Rolls-Royce in Dubai: Ghost, Cullinan, Phantom or Wraith. Choose the model and check availability with KINOVA on WhatsApp, phone or enquiry form.",
       ar: "استأجر رولز رويس في دبي: غوست أو كولينان أو فانتوم أو رايث. اختر الموديل وتحقق من التوفر مع KINOVA.",
-      ru: "Аренда Rolls-Royce в Дубае: Ghost, Cullinan, Phantom или Wraith. Выберите модель и уточните наличие у KINOVA.",
+      ru: "Аренда Роллс-Ройс (Rolls-Royce) в Дубае: Ghost, Cullinan, Phantom или Wraith. Выберите модель и уточните наличие у KINOVA.",
     },
-    h1: { en: "Rolls-Royce Rental Dubai", ar: "تأجير رولز رويس في دبي", ru: "Аренда Rolls-Royce в Дубае" },
+    h1: { en: "Rolls-Royce Rental Dubai", ar: "تأجير رولز رويس في دبي", ru: "Аренда Роллс-Ройс в Дубае" },
     intro: {
       en: "Rolls-Royce is less about speed and more about arrival. Choose the Ghost for refined everyday luxury, the Cullinan for the brand's SUV, the Phantom for the ultimate statement or the Wraith for a grand coupe.",
       ar: "رولز رويس ليست عن السرعة بقدر ما هي عن طريقة الوصول. اختر غوست للفخامة المصقولة، وكولينان للدفع الرباعي، وفانتوم لأقصى حضور، أو رايث للكوبيه الفاخرة.",
@@ -204,18 +205,18 @@ export const brands: Brand[] = [
   {
     key: "porsche",
     slug: "porsche",
-    name: { en: "Porsche", ar: "بورشه", ru: "Porsche" },
+    name: { en: "Porsche", ar: "بورشه", ru: "Порше" },
     title: {
       en: "Porsche Rental Dubai – Boxster Roadster",
       ar: "تأجير بورشه في دبي – بوكستر",
-      ru: "Аренда Porsche в Дубае – Boxster",
+      ru: "Аренда Порше в Дубае – Boxster",
     },
     description: {
       en: "Rent a Porsche Boxster in Dubai, a two-seat open-top roadster. Check availability with KINOVA on WhatsApp, phone or enquiry form.",
       ar: "استأجر بورشه بوكستر في دبي، رودستر مكشوفة بمقعدين. تحقق من التوفر مع KINOVA.",
       ru: "Аренда Porsche Boxster в Дубае – двухместный родстер с открытым верхом. Уточните наличие у KINOVA.",
     },
-    h1: { en: "Porsche Rental Dubai", ar: "تأجير بورشه في دبي", ru: "Аренда Porsche в Дубае" },
+    h1: { en: "Porsche Rental Dubai", ar: "تأجير بورشه في دبي", ru: "Аренда Порше в Дубае" },
     intro: {
       en: "The Porsche Boxster is a mid-engine, two-seat roadster – a good entry point to open-top driving in Dubai when you want balance and precision more than raw power.",
       ar: "بورشه بوكستر رودستر بمحرك وسطي ومقعدين، بداية جيدة للقيادة المكشوفة في دبي عندما تريد التوازن والدقة أكثر من القوة الخام.",
@@ -253,18 +254,18 @@ export const brands: Brand[] = [
   {
     key: "range-rover",
     slug: "range-rover",
-    name: { en: "Range Rover", ar: "رينج روفر", ru: "Range Rover" },
+    name: { en: "Range Rover", ar: "رينج روفر", ru: "Рендж Ровер" },
     title: {
       en: "Range Rover Rental Dubai – Defender SUV",
       ar: "تأجير رينج روفر في دبي – ديفندر",
-      ru: "Аренда Range Rover в Дубае – Defender",
+      ru: "Аренда Рендж Ровер в Дубае – Defender",
     },
     description: {
       en: "Rent a Range Rover Defender in Dubai: a capable, spacious luxury SUV for groups and desert-edge days. Check availability with KINOVA.",
       ar: "استأجر رينج روفر ديفندر في دبي: سيارة دفع رباعي فاخرة واسعة للمجموعات. تحقق من التوفر مع KINOVA.",
       ru: "Аренда Range Rover Defender в Дубае – вместительный люксовый внедорожник для компаний. Уточните наличие у KINOVA.",
     },
-    h1: { en: "Range Rover Rental Dubai", ar: "تأجير رينج روفر في دبي", ru: "Аренда Range Rover в Дубае" },
+    h1: { en: "Range Rover Rental Dubai", ar: "تأجير رينج روفر في دبي", ru: "Аренда Рендж Ровер в Дубае" },
     intro: {
       en: "For passengers, luggage and a commanding view of the road, the Defender is the practical luxury option. It sits in the Land Rover family alongside Range Rover, and is listed here for customers who search for it by either name.",
       ar: "للركاب والأمتعة ورؤية مرتفعة للطريق، ديفندر هي الخيار الفاخر العملي. تنتمي إلى عائلة لاند روفر إلى جانب رينج روفر، ومدرجة هنا لمن يبحث عنها بأي من الاسمين.",
@@ -302,18 +303,18 @@ export const brands: Brand[] = [
   {
     key: "chevrolet",
     slug: "chevrolet",
-    name: { en: "Chevrolet", ar: "شيفروليه", ru: "Chevrolet" },
+    name: { en: "Chevrolet", ar: "شيفروليه", ru: "Шевроле" },
     title: {
       en: "Chevrolet Rental Dubai – Corvette & American Sports Cars",
       ar: "تأجير شيفروليه في دبي – كورفيت وسيارات رياضية أمريكية",
-      ru: "Аренда Chevrolet в Дубае – Corvette и американские спорткары",
+      ru: "Аренда Шевроле в Дубае – Corvette и американские спорткары",
     },
     description: {
       en: "Rent a Chevrolet Corvette in Dubai: American sports-car performance in a mid-engine two-seater. Check availability with KINOVA.",
       ar: "استأجر شيفروليه كورفيت في دبي: أداء سيارة رياضية أمريكية بمحرك وسطي ومقعدين. تحقق من التوفر مع KINOVA.",
       ru: "Аренда Chevrolet Corvette в Дубае – американский спорткар со среднемоторной компоновкой. Уточните наличие у KINOVA.",
     },
-    h1: { en: "Chevrolet Rental Dubai", ar: "تأجير شيفروليه في دبي", ru: "Аренда Chevrolet в Дубае" },
+    h1: { en: "Chevrolet Rental Dubai", ar: "تأجير شيفروليه في دبي", ru: "Аренда Шевроле в Дубае" },
     intro: {
       en: "The Corvette brings supercar proportions and an unmistakably American V8 attitude. It is the most accessible way into exotic-looking performance in the line-up.",
       ar: "تقدّم كورفيت أبعاد السوبر كار وروح V8 الأمريكية الواضحة، وهي أسهل مدخل إلى الأداء ذي المظهر الاستثنائي في التشكيلة.",
@@ -351,18 +352,18 @@ export const brands: Brand[] = [
   {
     key: "ford",
     slug: "ford",
-    name: { en: "Ford", ar: "فورد", ru: "Ford" },
+    name: { en: "Ford", ar: "فورد", ru: "Форд" },
     title: {
       en: "Ford Rental Dubai – Mustang & American Muscle",
       ar: "تأجير فورد في دبي – موستانج وسيارات العضلات الأمريكية",
-      ru: "Аренда Ford в Дубае – Mustang и американские маслкары",
+      ru: "Аренда Форд в Дубае – Mustang и американские маслкары",
     },
     description: {
       en: "Rent a Ford Mustang in Dubai: an iconic American muscle car with a V8 soundtrack. Check availability with KINOVA on WhatsApp or enquiry form.",
       ar: "استأجر فورد موستانج في دبي: سيارة العضلات الأمريكية الأيقونية. تحقق من التوفر مع KINOVA.",
       ru: "Аренда Ford Mustang в Дубае – культовый американский маслкар. Уточните наличие у KINOVA в WhatsApp или через форму.",
     },
-    h1: { en: "Ford Rental Dubai", ar: "تأجير فورد في دبي", ru: "Аренда Ford в Дубае" },
+    h1: { en: "Ford Rental Dubai", ar: "تأجير فورد في دبي", ru: "Аренда Форд в Дубае" },
     intro: {
       en: "The Mustang is the easiest car in the fleet to understand: classic muscle-car looks, a four-seat layout and a character that is more about fun than lap times.",
       ar: "موستانج هي أسهل سيارة في الأسطول للفهم: مظهر عضلات كلاسيكي وأربعة مقاعد وشخصية تهتم بالمتعة أكثر من الأزمنة.",
@@ -398,6 +399,19 @@ export const brands: Brand[] = [
     },
   },
 ];
+
+export const brands: Brand[] = baseBrands.map((b) => {
+  const x = brandExtras[b.key];
+  return {
+    ...b,
+    body: {
+      en: [...b.body.en, x.body.en, ...(x.body2 ? [x.body2.en] : [])],
+      ar: [...(b.body.ar ?? []), x.body.ar!, ...(x.body2 ? [x.body2.ar!] : [])],
+      ru: [...(b.body.ru ?? []), x.body.ru!, ...(x.body2 ? [x.body2.ru!] : [])],
+    },
+    faq: { en: [...b.faq.en, ...x.faq.en], ar: [...(b.faq.ar ?? []), ...x.faq.ar!], ru: [...(b.faq.ru ?? []), ...x.faq.ru!] },
+  };
+});
 
 export const brandByKey = (key: BrandKey) => brands.find((b) => b.key === key)!;
 export const brandBySlug = (slug: string) => brands.find((b) => b.slug === slug);

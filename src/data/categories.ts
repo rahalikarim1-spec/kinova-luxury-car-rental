@@ -1,6 +1,7 @@
+import { categoryExtras } from "./landing-extras";
 import type { Category, CategoryKey } from "./types";
 
-export const categories: Category[] = [
+const baseCategories: Category[] = [
   {
     key: "supercars",
     slug: "supercar-rental-dubai",
@@ -292,6 +293,15 @@ export const categories: Category[] = [
     related: ["supercars", "sports-cars", "luxury-cars"],
   },
 ];
+
+export const categories: Category[] = baseCategories.map((c) => {
+  const x = categoryExtras[c.key];
+  return {
+    ...c,
+    sections: { en: [...c.sections.en, x.section.en], ar: [...(c.sections.ar ?? []), x.section.ar!], ru: [...(c.sections.ru ?? []), x.section.ru!] },
+    faq: { en: [...c.faq.en, ...x.faq.en], ar: [...(c.faq.ar ?? []), ...x.faq.ar!], ru: [...(c.faq.ru ?? []), ...x.faq.ru!] },
+  };
+});
 
 export const categoryByKey = (key: CategoryKey) => categories.find((c) => c.key === key)!;
 export const categoryBySlug = (slug: string) => categories.find((c) => c.slug === slug);

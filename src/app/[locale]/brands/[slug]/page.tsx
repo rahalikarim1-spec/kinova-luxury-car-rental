@@ -9,6 +9,7 @@ import { LinkList } from "@/components/ContentSections";
 import { CTASection } from "@/components/CTASection";
 import { CheckAvailabilityButton, WhatsAppButton } from "@/components/CtaButtons";
 import { FAQ } from "@/components/FAQ";
+import { InlineCTA, ModelGuide } from "@/components/LandingBlocks";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
 import { getDictionary } from "@/i18n";
@@ -41,6 +42,12 @@ export default async function BrandPage({ params }: P) {
   const name = pick(b.name, locale);
   const wa = whatsappMessage.brand(locale, b);
   const catKeys = [...new Set(cars.flatMap((c) => c.categories))] as CategoryKey[];
+  const dubaiLinks = [
+    { href: lp("/luxury-car-rental-dubai/"), label: d.nav.dubaiRental },
+    { href: lp("/cars/"), label: d.nav.fleet },
+    { href: lp("/services/"), label: d.nav.services },
+    { href: lp("/contact/"), label: d.nav.contact },
+  ];
   const otherBrands = brands.filter((x) => x.key !== b.key);
 
   return (
@@ -64,6 +71,9 @@ export default async function BrandPage({ params }: P) {
         <CarGrid vehicles={cars} locale={locale} ctaLocation="brand_page" priorityCount={3} />
       </section>
 
+      <ModelGuide vehicles={cars} locale={locale} ctaLocation="brand_page" />
+      <InlineCTA locale={locale} waMessage={wa} ctaLocation="brand_mid" />
+
       <section className="section border-y border-line bg-surface/40" aria-labelledby="brand-guide">
         <div className="container-x grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
           <h2 id="brand-guide" className="h-section">{name}</h2>
@@ -76,6 +86,7 @@ export default async function BrandPage({ params }: P) {
       <section className="border-t border-line py-12" aria-label={d.car.exploreMore}>
         <div className="container-x grid gap-8">
           <LinkList title={d.nav.categories} links={catKeys.map((k) => ({ href: lp(`/${categoryByKey(k).slug}/`), label: pick(categoryByKey(k).h1, locale) }))} />
+          <LinkList title={d.landing.dubaiTitle} links={dubaiLinks} />
           <LinkList title={d.nav.brands} links={otherBrands.map((x) => ({ href: lp(`/brands/${x.slug}/`), label: pick(x.h1, locale) }))} />
         </div>
       </section>

@@ -22,6 +22,8 @@ const titles = new Map(), descs = new Map(), h1s = new Map();
 const inlinks = new Map(paths.map((p) => [p, 0]));
 const allLinks = new Map(); // href -> source
 const pageInfo = new Map();
+const landing = new Map();
+const faqQ = new Map();
 const attr = (tag, name) => (tag.match(new RegExp(`${name}="([^"]*)"`)) || [])[1];
 const decode = (s = "") => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 const strip = (s) => decode(s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
@@ -82,6 +84,27 @@ for (const p of paths) {
     if (clean !== p && inlinks.has(clean)) inlinks.set(clean, inlinks.get(clean) + 1);
   }
   pageInfo.set(p, { alternates, canonical });
+
+  // landing-page depth / CRO / linking checks (brand + category pages)
+  const isLanding = /^(\/(ar|ru))?\/(brands\/[^/]+|supercar-rental-dubai|luxury-car-rental-dubai|sports-car-rental-dubai|luxury-suv-rental-dubai|convertible-car-rental-dubai)\/$/.test(p);
+  if (isLanding) {
+    const main = (html.match(/<main[\s\S]*<\/main>/) || [""])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, " ");
+    const words = strip(main).split(" ").filter(Boolean).length;
+    const key = p.replace(/^\/(ar|ru)\//, "/");
+    const loc = p.startsWith("/ar/") ? "ar" : p.startsWith("/ru/") ? "ru" : "en";
+    landing.set(`${loc}:${key}`, words);
+    const faqs = [...html.matchAll(/"@type":"Question","name":"((?:[^"\\]|\\.)*)"/g)].map((m) => m[1]);
+    if (faqs.length < 4) warn(p, `only ${faqs.length} FAQ items (need >= 4)`);
+    for (const q of faqs) {
+      const k = `${loc}:${q}`;
+      if (faqQ.has(k)) warn(p, `FAQ question duplicated on ${faqQ.get(k)}: ${q.slice(0, 60)}`); else faqQ.set(k, p);
+    }
+    const internal = new Set(links.filter((h) => h.startsWith("/") && !h.startsWith("//")).map((h) => h.split("#")[0]));
+    if (internal.size < 14) warn(p, `only ${internal.size} distinct internal links`);
+    if (!/api\.whatsapp\.com|wa\.me/.test(main)) warn(p, "no WhatsApp CTA in main content");
+    if (!/data-track="check_availability"/.test(main)) warn(p, "no Check Availability CTA in main content");
+    if (!/Check Availability|تحقق من التوفر|Проверить наличие/i.test(main)) warn(p, "Check Availability label missing");
+  }
 }
 
 // hreflang reciprocity + consistency
@@ -110,6 +133,19 @@ for (const [href, from] of allLinks) {
 
 // orphans
 for (const [p, n] of inlinks) if (n === 0 && p !== "/") warn(p, "orphan page (no internal links point to it)");
+
+// language parity of landing pages (Arabic packs more meaning per word, so its threshold is lower; structure – sections, FAQs, CTAs, links – is asserted separately)
+const wordsOf = (loc, key) => landing.get(`${loc}:${key}`);
+for (const k of [...landing.keys()].filter((x) => x.startsWith("en:")).map((x) => x.slice(3))) {
+  const en = wordsOf("en", k);
+  for (const [loc, min] of [["ar", 0.75], ["ru", 0.8]]) {
+    const w = wordsOf(loc, k);
+    if (!w) { warn(k, `${loc} landing page missing from crawl`); continue; }
+    if (w < en * min) warn(`${loc}${k}`, `thin vs English: ${w} words vs ${en} (min ${Math.round(en * min)})`);
+  }
+}
+console.log("Landing word counts (en / ar / ru):");
+for (const k of [...landing.keys()].filter((x) => x.startsWith("en:")).map((x) => x.slice(3))) console.log(`  ${k.padEnd(40)} ${wordsOf("en", k)} / ${wordsOf("ar", k)} / ${wordsOf("ru", k)}`);
 
 // robots.txt
 const robots = await text("/robots.txt");
