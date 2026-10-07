@@ -60,7 +60,7 @@ export function Header({ locale, path, waMessage }: { locale: Locale; path: stri
           <ButtonLink href={`${localePath(locale, "/contact/")}#enquiry`} size="sm" className="hidden lg:inline-flex" track={trackAttrs("check_availability", { cta_location: "header" })}>
             {d.cta.bookCar}
           </ButtonLink>
-          <MobileMenu openLabel={d.nav.openMenu} closeLabel={d.nav.closeMenu}>
+          <MobileMenu openLabel={d.nav.openMenu} closeLabel={d.nav.closeMenu} menuLabel={d.nav.primary}>
             <nav aria-label={d.nav.primary} className="pt-2">
               <ul className="divide-y divide-line border-y border-line">
                 {nav.map((item) => (
